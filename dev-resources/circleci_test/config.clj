@@ -2,4 +2,4 @@
 
 {:selectors {:all (constantly true)
              :default (complement :flaky)}
- :reporters [circleci-ultra-reporter.core/clojure-test-reporter]}
+ :reporters [circleci-ultra-reporter.core/ultra-test-reporter]}

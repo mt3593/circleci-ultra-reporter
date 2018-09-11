@@ -6,13 +6,7 @@
             [ultra.test.diff :as diff]
             [puget.color.ansi :as ansi]))
 
-(defn foo
-  "I don't do a whole lot."
-  [x]
-  (println x "Hello, World!"))
-
-
-(deftype ClojureDotTestReporter []
+(deftype UltraReporter []
   report/TestReporter
   (default [this m]
     (when report/*debug*
@@ -45,11 +39,11 @@
         (pretty-repl/pretty-print-stack-trace actual)
                 (prn actual))))
 
-  (summary [this m]
+  (summary [this {:keys [test pass fail error]}]
     (test/with-test-out
-      (println "\nRan" (:test m) "tests containing"
-               (+ (:pass m) (:fail m) (:error m)) "assertions.")
-      (println (:fail m) "failures," (:error m) "errors.")))
+      (println "\nRan" test "tests containing"
+               (+ pass fail error) "assertions.")
+      (println fail "failures," error "errors.")))
 
   (begin-test-ns [this m]
     (test/with-test-out
@@ -63,5 +57,5 @@
 
   (end-test-var [this m]))
 
-(defn clojure-test-reporter [_config]
-    (->ClojureDotTestReporter))
+(defn ultra-test-reporter [_config]
+    (->UltraReporter))
