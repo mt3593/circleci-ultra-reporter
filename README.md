@@ -4,7 +4,7 @@ Reporter for (circleci.test)[https://github.com/circleci/circleci.test] that uti
 
 ## Installation
 
-To install this library add the following to you test dependancies `[mt3593/circleci-ultra-reporter "0.0.1"]`
+To install this library add the following to you test dependancies `[circleci-ultra-reporter "0.1.0"]`
 
 Then in your config file for (circleci.test)[https://github.com/circleci/circleci.test] (default location is `dev-resources/circleci_test/config.clj` but may not exist if just using default config), add the circleci-ultra-reporter to the list of reporters:
 
